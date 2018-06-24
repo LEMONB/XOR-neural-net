@@ -21,7 +21,7 @@ learningRate = 0.7
 moment = 0.3
 bias = 1
 inputNeurons = 2
-hiddenNeurons = 2
+hiddenNeurons = 5
 outputNeurons = 1
 trainSet = np.array([[0,0],[0,1],[1,0],[1,1]])
 trainAnswers = np.array([[0],[1],[1],[0]])
@@ -106,10 +106,13 @@ for j in range(0,maxEpoch):
         #time.sleep(0.001)
         print()
 
-        #averageEpochError += math.pow(errors,2)
+        for err in errors:
+            averageEpochError += math.pow(err,2)
 
-    #averageEpochError /= 4
-    #print("err", averageEpochError)
+    averageEpochError /= 4
+    print("averageEpochError ", averageEpochError)
+    if averageEpochError < 0.001:
+        break
     #print("----------- epoch",j,"------")
     print()
 
