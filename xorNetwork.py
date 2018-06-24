@@ -4,9 +4,9 @@ import time
 import pygame
 import numpy as np
 
-pygame.init()
-screen = pygame.display.set_mode((800, 600))
-clock = pygame.time.Clock()
+#pygame.init()
+#screen = pygame.display.set_mode((800, 600))
+#clock = pygame.time.Clock()
 
 def sigmoid(x):
     return 1/(1+math.exp(-x))
@@ -14,24 +14,24 @@ def sigmoid(x):
 def drawNet(x):
     print(inputs[0],inputs[1])
     print(round(outputOutputs[0],2),"(",trainAnswers[x],")")
-    pygame.display.update()
+    #pygame.display.update()
 
-maxEpoch = 10000
-learningRate = 0.7
+maxEpoch = 30000
+learningRate = 0.8
 moment = 0.3
 bias = 1
 inputNeurons = 2
-hiddenNeurons = 5
+hiddenNeurons = 50
 outputNeurons = 1
 trainSet = np.array([[0,0],[0,1],[1,0],[1,1]])
 trainAnswers = np.array([[0],[1],[1],[0]])
 
 randomRange = 0.2
 inputs = trainSet[0] #[random.randint(0,1),random.randint(0,1)]
-weights_1 = np.random.random((hiddenNeurons,inputNeurons))
-weights_2 = np.random.random((outputNeurons,hiddenNeurons))
-biases_1 = np.random.random(hiddenNeurons)
-biases_2 = np.random.random(outputNeurons)
+weights_1 = np.random.uniform(-randomRange,randomRange,(hiddenNeurons,inputNeurons))
+weights_2 = np.random.uniform(-randomRange,randomRange,(outputNeurons,hiddenNeurons))
+biases_1 = np.random.uniform(-randomRange,randomRange,hiddenNeurons)
+biases_2 = np.random.uniform(-randomRange,randomRange,outputNeurons)
 hiddenInputs = np.array(hiddenNeurons)
 hiddenOutputs = np.array(hiddenNeurons)
 outputInputs = np.array(outputNeurons)
@@ -46,12 +46,12 @@ lastDeltaWeights_2 = np.zeros((hiddenNeurons,outputNeurons))
 lastDeltaBiases_1 = np.zeros(hiddenNeurons)
 lastDeltaBiases_2 = np.zeros(outputNeurons)
 
-screen.fill((192, 192, 192))
-clock.tick(60)
+#screen.fill((192, 192, 192))
+#clock.tick(60)
 
-font = pygame.font.SysFont("comicsansms", 10)
+#font = pygame.font.SysFont("comicsansms", 10)
 
-pygame.display.update()
+#pygame.display.update()
 
 for j in range(0,maxEpoch):
     print("----------- epoch",j,"------")
@@ -64,7 +64,7 @@ for j in range(0,maxEpoch):
         hiddenInputs = np.dot(weights_1, inputs) + biases_1
         activation = np.vectorize(sigmoid)
         hiddenOutputs = activation(hiddenInputs)
-
+        #print(hiddenOutputs)
         outputInputs = np.dot(weights_2, hiddenOutputs) + biases_2
         outputOutputs = activation(outputInputs)
         # end of feed forward
