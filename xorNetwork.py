@@ -4,24 +4,71 @@ import time
 import pygame
 import numpy as np
 
-#pygame.init()
-#screen = pygame.display.set_mode((800, 600))
-#clock = pygame.time.Clock()
+pygame.init()
+screen = pygame.display.set_mode((800, 600))
+clock = pygame.time.Clock()
 
 def sigmoid(x):
     return 1/(1+math.exp(-x))
 
+TOP_BORDER = 100
+LEFT_BORDER = 100
+RIGHT_BORDER = pygame.display.get_surface().get_width() - 100
+BOTTOM_BORDER = pygame.display.get_surface().get_height() - 100
+
+def clamp(x, minimum, maximum):
+    return max(minimum, min(x, maximum))
+
 def drawNet(x):
     print(inputs[0],inputs[1])
     print(round(outputOutputs[0],2),"(",trainAnswers[x],")")
-    #pygame.display.update()
+    screen.fill((192, 192, 192))
+
+    # drawing weights_1
+    for i in range(inputNeurons):
+        for j in range(hiddenNeurons):
+            pygame.draw.line(screen,pygame.__color_constructor(255,255,0,255),(LEFT_BORDER,TOP_BORDER + i * round((BOTTOM_BORDER-TOP_BORDER)/inputNeurons)),
+                             (round((RIGHT_BORDER - LEFT_BORDER)/2 + LEFT_BORDER),TOP_BORDER +
+                              j * round((BOTTOM_BORDER-TOP_BORDER)/hiddenNeurons)),clamp(int(weights_1[j][i]*100),1,10))
+
+    # drawing weights_2
+    for i in range(hiddenNeurons):
+        for j in range(outputNeurons):
+            pygame.draw.line(screen,pygame.__color_constructor(255,255,255,255),(round((RIGHT_BORDER - LEFT_BORDER)/2 + LEFT_BORDER),TOP_BORDER + i * round((BOTTOM_BORDER-TOP_BORDER)/hiddenNeurons)),
+                             (RIGHT_BORDER, TOP_BORDER + j * round((BOTTOM_BORDER - TOP_BORDER) / outputNeurons)),
+                             clamp(int(weights_2[j][i]),1,10))
+
+    #drawing inputs
+    for k in range(inputNeurons):
+        pygame.draw.circle(screen,pygame.__color_constructor(255,255,255,255),
+                           (LEFT_BORDER,TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/inputNeurons)),35)
+        text = font.render(str(inputs[k]), False, (0, 0, 0))
+        screen.blit(text, (LEFT_BORDER,TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/inputNeurons)) )
+
+    #drawing hiddens
+    for k in range(hiddenNeurons):
+        pygame.draw.circle(screen,pygame.__color_constructor(255,255,255,255),
+                           (round((RIGHT_BORDER - LEFT_BORDER)/2 + LEFT_BORDER),TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/hiddenNeurons)),35)
+        text = font.render(str(round(hiddenOutputs[k],2)), False, (0, 0, 0))
+        screen.blit(text, (round((RIGHT_BORDER - LEFT_BORDER)/2 + LEFT_BORDER),TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/hiddenNeurons)) )
+
+    #drawing outputs
+    for k in range(outputNeurons):
+        pygame.draw.circle(screen,pygame.__color_constructor(255,255,255,255),
+                           (RIGHT_BORDER,TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/outputNeurons)),35)
+        text = font.render(str(round(outputOutputs[k],2)), False, (0, 0, 0))
+        screen.blit(text, (RIGHT_BORDER,TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/outputNeurons)) )
+        text = font.render(str(trainAnswers[x]), False, (0, 0, 0))
+        screen.blit(text, (RIGHT_BORDER+20,TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/outputNeurons)) )
+
+    pygame.display.update()
 
 maxEpoch = 30000
 learningRate = 0.8
 moment = 0.3
 bias = 1
 inputNeurons = 2
-hiddenNeurons = 50
+hiddenNeurons = 5
 outputNeurons = 1
 trainSet = np.array([[0,0],[0,1],[1,0],[1,1]])
 trainAnswers = np.array([[0],[1],[1],[0]])
@@ -46,12 +93,12 @@ lastDeltaWeights_2 = np.zeros((hiddenNeurons,outputNeurons))
 lastDeltaBiases_1 = np.zeros(hiddenNeurons)
 lastDeltaBiases_2 = np.zeros(outputNeurons)
 
-#screen.fill((192, 192, 192))
-#clock.tick(60)
+screen.fill((192, 192, 192))
+clock.tick(60)
 
-#font = pygame.font.SysFont("comicsansms", 10)
+font = pygame.font.SysFont("comicsansms", 10)
 
-#pygame.display.update()
+pygame.display.update()
 
 for j in range(0,maxEpoch):
     print("----------- epoch",j,"------")
@@ -111,7 +158,7 @@ for j in range(0,maxEpoch):
 
     averageEpochError /= 4
     print("averageEpochError ", averageEpochError)
-    if averageEpochError < 0.001:
+    if averageEpochError < 0.0005:
         break
     #print("----------- epoch",j,"------")
     print()
