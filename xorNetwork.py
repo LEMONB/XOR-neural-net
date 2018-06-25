@@ -27,28 +27,30 @@ def drawNet(x):
     # drawing weights_1
     for i in range(inputNeurons):
         for j in range(hiddenNeurons):
-            pygame.draw.line(screen,pygame.__color_constructor(255,255,0,255),(LEFT_BORDER,TOP_BORDER + i * round((BOTTOM_BORDER-TOP_BORDER)/inputNeurons)),
+            pygame.draw.line(screen,pygame.__color_constructor(255-int(255*sigmoid(weights_1[j][i])),int(255*sigmoid(weights_1[j][i])),0,255),(LEFT_BORDER,TOP_BORDER + i * round((BOTTOM_BORDER-TOP_BORDER)/inputNeurons)),
                              (round((RIGHT_BORDER - LEFT_BORDER)/2 + LEFT_BORDER),TOP_BORDER +
-                              j * round((BOTTOM_BORDER-TOP_BORDER)/hiddenNeurons)),clamp(int(weights_1[j][i]*100),1,10))
+                              j * round((BOTTOM_BORDER-TOP_BORDER)/hiddenNeurons)),int(10*sigmoid(weights_1[j][i])+1))
 
     # drawing weights_2
     for i in range(hiddenNeurons):
         for j in range(outputNeurons):
-            pygame.draw.line(screen,pygame.__color_constructor(255,255,255,255),(round((RIGHT_BORDER - LEFT_BORDER)/2 + LEFT_BORDER),TOP_BORDER + i * round((BOTTOM_BORDER-TOP_BORDER)/hiddenNeurons)),
+            pygame.draw.line(screen,pygame.__color_constructor(255-int(255*sigmoid(weights_2[j][i])),int(255*sigmoid(weights_2[j][i])),0,255),(round((RIGHT_BORDER - LEFT_BORDER)/2 + LEFT_BORDER),TOP_BORDER + i * round((BOTTOM_BORDER-TOP_BORDER)/hiddenNeurons)),
                              (RIGHT_BORDER, TOP_BORDER + j * round((BOTTOM_BORDER - TOP_BORDER) / outputNeurons)),
-                             clamp(int(weights_2[j][i]),1,10))
+                             int(10 * sigmoid(weights_2[j][i]) + 1))
 
     #drawing inputs
     for k in range(inputNeurons):
         pygame.draw.circle(screen,pygame.__color_constructor(255,255,255,255),
-                           (LEFT_BORDER,TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/inputNeurons)),35)
+                           (LEFT_BORDER,TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/inputNeurons)),
+                           35)
         text = font.render(str(inputs[k]), False, (0, 0, 0))
         screen.blit(text, (LEFT_BORDER,TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/inputNeurons)) )
 
     #drawing hiddens
     for k in range(hiddenNeurons):
         pygame.draw.circle(screen,pygame.__color_constructor(255,255,255,255),
-                           (round((RIGHT_BORDER - LEFT_BORDER)/2 + LEFT_BORDER),TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/hiddenNeurons)),35)
+                           (round((RIGHT_BORDER - LEFT_BORDER)/2 + LEFT_BORDER),TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/hiddenNeurons)),
+                           int(min(35,(TOP_BORDER + round(BOTTOM_BORDER - TOP_BORDER))/hiddenNeurons/2-7)))
         text = font.render(str(round(hiddenOutputs[k],2)), False, (0, 0, 0))
         screen.blit(text, (round((RIGHT_BORDER - LEFT_BORDER)/2 + LEFT_BORDER),TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/hiddenNeurons)) )
 
@@ -68,7 +70,7 @@ learningRate = 0.8
 moment = 0.3
 bias = 1
 inputNeurons = 2
-hiddenNeurons = 5
+hiddenNeurons = 6
 outputNeurons = 1
 trainSet = np.array([[0,0],[0,1],[1,0],[1,1]])
 trainAnswers = np.array([[0],[1],[1],[0]])
