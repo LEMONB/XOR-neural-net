@@ -159,7 +159,6 @@ for j in range(0,maxEpoch):
     for i in range(len(trainSet)):
         print("-- set",i,"--")
         inputs = trainSet[i]
-        #print("in", inputs[0], inputs[1])
 
         # feed forward
         hiddenInputs = np.dot(weights_1, inputs) + biases_1
@@ -170,10 +169,7 @@ for j in range(0,maxEpoch):
         outputOutputs = activation(outputInputs)
         # end of feed forward
 
-
-        #print("out", outputOutputs)
         errors = trainAnswers[i] - outputOutputs
-        #print("err",i, errors[i])
 
         # weights from hidden to output
         deltaOut = errors * np.full(outputNeurons, (1 - outputOutputs) * outputOutputs)
