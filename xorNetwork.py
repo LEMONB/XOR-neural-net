@@ -7,9 +7,9 @@ import datetime
 import neuralNetwokClass as network
 import nnLayerClass as nl
 
-pygame.init()
-screen = pygame.display.set_mode((600, 400))
-clock = pygame.time.Clock()
+# pygame.init()
+# screen = pygame.display.set_mode((600, 400))
+# clock = pygame.time.Clock()
 
 # MAIN METHODS
 def sigmoid(x):
@@ -66,8 +66,8 @@ def loadNN(fileName):
     #
     #     file.close()
 
-def drawNet(x):
-    screen.fill((192, 192, 192))
+# def drawNet(x):
+    # screen.fill((192, 192, 192))
 
     # # drawing weights_1
     # for i in range(inputNeurons):
@@ -112,92 +112,39 @@ def drawNet(x):
     # pygame.display.update()
 
 # MAIN VARIABLES
-TOP_BORDER = 100
-LEFT_BORDER = 100
-RIGHT_BORDER = pygame.display.get_surface().get_width() - 100
-BOTTOM_BORDER = pygame.display.get_surface().get_height() - 100
+# TOP_BORDER = 100
+# LEFT_BORDER = 100
+# RIGHT_BORDER = pygame.display.get_surface().get_width() - 100
+# BOTTOM_BORDER = pygame.display.get_surface().get_height() - 100
 
-maxEpoch = 5000
-learningRate = 0.7
-moment = 0.3
-bias = 1
-#inputNeurons = 3
-#hiddenNeurons = 4
-#outputNeurons = 1
+maxEpoch = 20000
+
 trainSet = np.array([[0,0,0],[0,0,1],[0,1,0],[0,1,1],
                      [1,0,0],[1,0,1],[1,1,0],[1,1,1]])
 trainAnswers = np.array([[0],[1],[1],[0],
                          [1],[0],[0],[1]])
 
-randomRange = 0.2
-#inputs = trainSet[0] #[random.randint(0,1),random.randint(0,1)]
-#weights_1 = np.random.uniform(-randomRange,randomRange,(hiddenNeurons,inputNeurons))
-#weights_2 = np.random.uniform(-randomRange,randomRange,(outputNeurons,hiddenNeurons))
-#biases_1 = np.random.uniform(-randomRange,randomRange,hiddenNeurons)
-#biases_2 = np.random.uniform(-randomRange,randomRange,outputNeurons)
-#hiddenInputs = np.array(hiddenNeurons)
-#hiddenOutputs = np.array(hiddenNeurons)
-#outputInputs = np.array(outputNeurons)
-#outputOutputs = np.array(outputNeurons)
 
 averageEpochError = 0
-# errors = np.zeros(layers) #[0] * len(trainAnswers)
-# deltaOut = np.zeros(outputNeurons)
-# deltasH = np.zeros(hiddenNeurons)
-# lastDeltaWeights_1 = np.zeros((inputNeurons,hiddenNeurons))
-# lastDeltaWeights_2 = np.zeros((hiddenNeurons,outputNeurons))
-# lastDeltaBiases_1 = np.zeros(hiddenNeurons)
-# lastDeltaBiases_2 = np.zeros(outputNeurons)
 
-screen.fill((192, 192, 192))
-clock.tick(60)
+# screen.fill((192, 192, 192))
+# clock.tick(60)
+#
+# font = pygame.font.SysFont("comicsansms", 10)
 
-font = pygame.font.SysFont("comicsansms", 10)
-
-pygame.display.update()
+#pygame.display.update()
 
 #loadNN("20180627005350341.txt")
 
-hiddenLayerTopology = np.array([3,2])
-nn = network.Network(3,[2,4],1)
+nn = network.Network(3,[2,2,3],1)
 
 for j in range(0,maxEpoch):
     print("----------- epoch",j,"------")
     for i in range(len(trainSet)):
         print("-- set",i,"--")
-
-        # errors = trainAnswers[i] - outputOutputs
-        #
-        # # weights from hidden to output
-        # deltaOut = errors * np.full(outputNeurons, (1 - outputOutputs) * outputOutputs)
-        # deltasH = np.dot(np.transpose(weights_2), deltaOut) * np.full(hiddenNeurons, (1 - hiddenOutputs) * hiddenOutputs)
-        #
-        # grad_2 = np.dot(np.transpose(np.reshape(hiddenOutputs, (1, hiddenNeurons))), np.reshape(deltaOut, (1, outputNeurons)))
-        #
-        # deltaWeights_2 = grad_2 * learningRate + (lastDeltaWeights_2 * moment)
-        # lastDeltaWeights_2 = deltaWeights_2
-        #
-        # deltaBiases_2 = deltaOut * learningRate + (lastDeltaBiases_2 * moment)
-        # lastDeltaBiases_2 = deltaBiases_2
-        #
-        # weights_2 += np.transpose(deltaWeights_2)
-        # biases_2 += deltaBiases_2
-        #
-        # # weights from input to hidden
-        # grad_1 = np.dot(np.transpose(np.reshape(inputs, (1, inputNeurons))), np.reshape(deltasH, (1, hiddenNeurons)))
-        #
-        # deltaWeights_1 = grad_1 * learningRate + (lastDeltaWeights_1 * moment)
-        # lastDeltaWeights_1 = deltaWeights_1
-        #
-        # deltaBiases_1 = deltasH * learningRate + (lastDeltaBiases_1 * moment)
-        # lastDeltaBiases_1 = deltaBiases_1
-        #
-        # weights_1 += np.transpose(deltaWeights_1)
-        # biases_1 += deltaBiases_1
-
-        # drawing network
-        drawNet(i)
+        #drawNet(i)
         print(nn.feedForward(trainSet[i]),"(",trainAnswers[i],")")
+        nn.train(trainSet[i],trainAnswers[i])
         #time.sleep(0.001)
         print()
 
@@ -211,6 +158,6 @@ for j in range(0,maxEpoch):
     #print("----------- epoch",j,"------")
     print()
 
-saveNN()
+#saveNN()
 
 dummy = input()

@@ -38,38 +38,39 @@ class Network:
     def train(self, inputData, expectedData, learningRate = 0.3, inertia = 0.3):
         prediction = self.feedForward(inputData)
 
-        error = expectedData - prediction
+        errors = expectedData - prediction
+        neuronsDelta = errors * np.full(self.outputLayer.length,(1 - self.outputLayer.neurons) * self.outputLayer.neurons)
 
-        # weights from hidden to output
-        deltaOut = error * np.full(len(self.outputLayer.neurons),
-                                   (1 - self.outputLayer.neurons) * self.outputLayer.neurons)
-        for i in range(len(self.hiddenLayers)-1,0):
+        # weights inside hidden layers
+        for i in range(len(self.hiddenLayers)-1,-1,-1):
             if i == len(self.hiddenLayers)-1:
-                hiddenDelta = np.dot(np.transpose(self.hiddenLayers[i].weights), deltaOut) * \
-                              np.full(len(self.hiddenLayers[i].neurons),(1 - self.hiddenLayers[i].neurons) * self.hiddenLayers[i].neurons)
+                grad = np.dot(np.transpose(np.reshape(self.hiddenLayers[i].neurons, (1, self.hiddenLayers[i].length))), np.reshape(neuronsDelta, (1, self.outputLayer.length)))
+            else:
+                grad = np.dot(np.transpose(np.reshape(self.hiddenLayers[i].neurons, (1, self.hiddenLayers[i].length))), np.reshape(neuronsDelta, (1, self.hiddenLayers[i+1].length)))
 
-                grad_2 = np.dot(np.transpose(np.reshape(self.hiddenLayers[i].neurons, (1, len(self.hiddenLayers[i].neurons)))), np.reshape(deltaOut, (1, len(self.hiddenLayers[i].neurons))))
+            weightsDelta = grad * learningRate + self.hiddenLayers[i].lastWeightsDelta * inertia
+            self.hiddenLayers[i].lastWeightsDelta = weightsDelta
 
-                deltaWeights_2 = grad_2 * learningRate + (lastDeltaWeights_2 * inertia)
-                lastDeltaWeights_2 = deltaWeights_2
+            biasesDelta = neuronsDelta * learningRate + self.hiddenLayers[i].lastBiasesDelta * inertia
+            self.hiddenLayers[i].lastBiasesDelta = biasesDelta
 
-                deltaBiases_2 = deltaOut * learningRate + (lastDeltaBiases_2 * inertia)
-                lastDeltaBiases_2 = deltaBiases_2
+            self.hiddenLayers[i].weights += np.transpose(weightsDelta)
+            self.hiddenLayers[i].biases += biasesDelta
 
-                weights_2 += np.transpose(deltaWeights_2)
-                biases_2 += deltaBiases_2
+            neuronsDelta = np.dot(np.transpose(self.hiddenLayers[i].weights), neuronsDelta) * \
+                              np.full(self.hiddenLayers[i].length,(1 - self.hiddenLayers[i].neurons) * self.hiddenLayers[i].neurons)
 
-        # weights from input to hidden
-        grad_1 = np.dot(np.transpose(np.reshape(inputs, (1, inputNeurons))), np.reshape(hiddenDelta, (1, hiddenNeurons)))
+        # weights from input layer
+        grad = np.dot(np.transpose(np.reshape(self.inputLayer.neurons, (1, self.inputLayer.length))), np.reshape(neuronsDelta, (1, self.hiddenLayers[0].length)))
 
-        deltaWeights_1 = grad_1 * learningRate + (lastDeltaWeights_1 * inertia)
-        lastDeltaWeights_1 = deltaWeights_1
+        weightsDelta = grad * learningRate + self.inputLayer.lastWeightsDelta * inertia
+        self.inputLayer.lastWeightsDelta = weightsDelta
 
-        deltaBiases_1 = hiddenDelta * learningRate + (lastDeltaBiases_1 * inertia)
-        lastDeltaBiases_1 = deltaBiases_1
+        biasesDelta = neuronsDelta * learningRate + self.inputLayer.lastBiasesDelta * inertia
+        self.inputLayer.lastBiasesDelta = biasesDelta
 
-        weights_1 += np.transpose(deltaWeights_1)
-        biases_1 += deltaBiases_1
+        self.inputLayer.weights += np.transpose(weightsDelta)
+        self.inputLayer.biases += biasesDelta
 
     def sigmoid(self, x):
         return 1/(1+math.exp(-x))
