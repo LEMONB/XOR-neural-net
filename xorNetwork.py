@@ -4,6 +4,7 @@ import time
 import pygame
 import numpy as np
 import datetime
+import layer
 
 pygame.init()
 screen = pygame.display.set_mode((600, 400))

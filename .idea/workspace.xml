@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="net.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/net.py">
+      <file leaf-file-name="xorNetwork.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xorNetwork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="71" selection-end-column="27" />
+            <state relative-caret-position="153">
+              <caret line="120" column="16" lean-forward="true" selection-start-line="120" selection-start-column="16" selection-end-line="120" selection-end-column="16" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -23,14 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="xorNetwork.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/xorNetwork.py">
+      <file leaf-file-name="hiddenLayer.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hiddenLayer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="153">
+              <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -53,6 +50,7 @@
         <option value="$PROJECT_DIR$/venv/xorNetwork.py" />
         <option value="$PROJECT_DIR$/net.py" />
         <option value="$PROJECT_DIR$/xorNetwork.py" />
+        <option value="$PROJECT_DIR$/hiddenLayer.py" />
       </list>
     </option>
   </component>
@@ -68,6 +66,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -75,16 +74,10 @@
               <item name="XOR neural net" type="b2602c69:ProjectViewProjectNode" />
               <item name="XOR neural net" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="XOR neural net" type="b2602c69:ProjectViewProjectNode" />
-              <item name="XOR neural net" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -172,7 +165,7 @@
     <frame x="546" y="33" width="1330" height="917" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18645358" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18645358" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" x="696" y="390" width="540" height="278" id="Event Log" order="7" sideWeight="0.37054795" side_tool="true" type="FLOATING" weight="0.3440594" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
@@ -204,7 +197,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/xorNetwork.py</url>
-          <line>154</line>
+          <line>155</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
@@ -212,6 +205,26 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="71" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xorNetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2771">
+          <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/net.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -376,24 +389,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/govno.txt" />
     <entry file="file://$PROJECT_DIR$/net.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="71" selection-end-column="27" />
+        <state relative-caret-position="-714">
+          <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/govno.txt" />
     <entry file="file://$PROJECT_DIR$/xorNetwork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
+        <state relative-caret-position="153">
+          <caret line="120" column="16" lean-forward="true" selection-start-line="120" selection-start-column="16" selection-end-line="120" selection-end-column="16" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hiddenLayer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
         </state>
       </provider>
     </entry>
