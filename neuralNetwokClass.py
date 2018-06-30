@@ -6,7 +6,7 @@ class Network:
     def __init__(self,inputNodes,hiddenLayersAndNodes,outputNodes):
         self.inputLayer = nl.Layer(inputNodes,hiddenLayersAndNodes[0])
 
-        self.hiddenLayers = np.array((1, len(hiddenLayersAndNodes)),dtype=nl.Layer)
+        self.hiddenLayers = np.empty(len(hiddenLayersAndNodes),dtype=nl.Layer)
         for i in range(len(hiddenLayersAndNodes)):
             if i == len(hiddenLayersAndNodes)-1:
                 self.hiddenLayers[i] = nl.Layer(hiddenLayersAndNodes[i], outputNodes)

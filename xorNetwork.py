@@ -136,7 +136,7 @@ averageEpochError = 0
 
 #loadNN("20180627005350341.txt")
 
-nn = network.Network(3,[2,2,3],1)
+nn = network.Network(3,[3,3],1)
 
 for j in range(0,maxEpoch):
     print("----------- epoch",j,"------")
