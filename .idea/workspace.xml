@@ -14,8 +14,8 @@
       <file leaf-file-name="xorNetwork.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xorNetwork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="120" column="16" lean-forward="true" selection-start-line="120" selection-start-column="16" selection-end-line="120" selection-end-column="16" />
+            <state relative-caret-position="1233">
+              <caret line="163" column="12" lean-forward="true" selection-start-line="163" selection-start-column="12" selection-end-line="163" selection-end-column="12" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -23,11 +23,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hiddenLayer.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hiddenLayer.py">
+      <file leaf-file-name="neuralNetwokClass.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/neuralNetwokClass.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="723">
+              <caret line="67" column="81" selection-start-line="67" selection-start-column="81" selection-end-line="67" selection-end-column="81" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nnLayerClass.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nnLayerClass.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -49,15 +61,18 @@
       <list>
         <option value="$PROJECT_DIR$/venv/xorNetwork.py" />
         <option value="$PROJECT_DIR$/net.py" />
-        <option value="$PROJECT_DIR$/xorNetwork.py" />
         <option value="$PROJECT_DIR$/hiddenLayer.py" />
+        <option value="$PROJECT_DIR$/layer.py" />
+        <option value="$PROJECT_DIR$/nnLayerClass.py" />
+        <option value="$PROJECT_DIR$/xorNetwork.py" />
+        <option value="$PROJECT_DIR$/neuralNetwokClass.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="546" />
-    <option name="y" value="33" />
-    <option name="width" value="1330" />
+    <option name="x" value="457" />
+    <option name="y" value="36" />
+    <option name="width" value="1467" />
     <option name="height" value="917" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -162,15 +177,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="546" y="33" width="1330" height="917" extended-state="0" />
+    <frame x="457" y="36" width="1467" height="917" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18645358" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16884907" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" x="696" y="390" width="540" height="278" id="Event Log" order="7" sideWeight="0.37054795" side_tool="true" type="FLOATING" weight="0.3440594" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32917705" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" x="47" y="146" width="717" height="809" id="Run" order="2" sideWeight="0.62945205" type="FLOATING" weight="0.36262375" />
+      <window_info active="true" anchor="bottom" x="47" y="146" width="660" height="809" id="Run" order="2" sideWeight="0.62945205" type="FLOATING" visible="true" weight="0.36262375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -181,7 +197,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32920793" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -196,12 +211,12 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/xorNetwork.py</url>
-          <line>155</line>
-          <option name="timeStamp" value="23" />
+          <url>file://$PROJECT_DIR$/nnLayerClass.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="24" />
+      <option name="time" value="26" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -400,20 +415,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xorNetwork.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="1657" selection-start-line="1657" selection-end-line="1657" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nnLayerClass.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="120" column="16" lean-forward="true" selection-start-line="120" selection-start-column="16" selection-end-line="120" selection-end-column="16" />
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xorNetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1233">
+          <caret line="163" column="12" lean-forward="true" selection-start-line="163" selection-start-column="12" selection-end-line="163" selection-end-column="12" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hiddenLayer.py">
+    <entry file="file://$PROJECT_DIR$/neuralNetwokClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        <state relative-caret-position="723">
+          <caret line="67" column="81" selection-start-line="67" selection-start-column="81" selection-end-line="67" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
