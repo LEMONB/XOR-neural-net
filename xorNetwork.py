@@ -119,12 +119,15 @@ def loadNN(fileName):
 
 maxEpoch = 20000
 
+trainingData = np.array([([0,0,0],[0]),([0,0,1],[1]),([0,1,0],[1]),([0,1,1],[0]),
+                     ([1,0,0],[1]),([1,0,1],[0]),([1,1,0],[0]),([1,1,1],[1])])
+
 trainSet = np.array([[0,0,0],[0,0,1],[0,1,0],[0,1,1],
                      [1,0,0],[1,0,1],[1,1,0],[1,1,1]])
 trainAnswers = np.array([[0],[1],[1],[0],
                          [1],[0],[0],[1]])
 
-
+sumOfCurrentErrors = 0
 averageEpochError = 0
 
 # screen.fill((192, 192, 192))
@@ -136,26 +139,21 @@ averageEpochError = 0
 
 #loadNN("20180627005350341.txt")
 
-nn = network.Network(3,[3,3],1)
+nn = network.Network(3,[3],1)
 
 for j in range(0,maxEpoch):
-    print("----------- epoch",j,"------")
-    for i in range(len(trainSet)):
-        print("-- set",i,"--")
-        #drawNet(i)
-        print(nn.feedForward(trainSet[i]),"(",trainAnswers[i],")")
+    print("----------- epoch",j,"-----------")
+    for i in range(len(trainingData)):
+        prediction = nn.feedForward(trainSet[i])
+        print("-- set",i,"-- ",prediction,"(",trainAnswers[i],")")
+        sumOfCurrentErrors += math.pow(trainAnswers[i] - prediction,2)
         nn.train(trainSet[i],trainAnswers[i])
-        #time.sleep(0.001)
-        print()
-
-    #     for err in errors:
-    #         averageEpochError += math.pow(err,2)
-    #
-    # averageEpochError /= len(trainSet)
-    # print("averageEpochError ", averageEpochError)
-    # if averageEpochError < 0.001:
-    #     break
-    #print("----------- epoch",j,"------")
+    averageEpochError = sumOfCurrentErrors / len(trainSet)
+    print("averageEpochError ", averageEpochError)
+    if averageEpochError < 0.001:
+        break
+    sumOfCurrentErrors = 0
+    averageEpochError = 0
     print()
 
 #saveNN()

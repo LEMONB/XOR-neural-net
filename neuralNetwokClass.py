@@ -35,7 +35,7 @@ class Network:
 
         return self.outputLayer.neurons
 
-    def train(self, inputData, expectedData, learningRate = 0.3, inertia = 0.3):
+    def train(self, inputData, expectedData, learningRate = 0.7, inertia = 0.3):
         prediction = self.feedForward(inputData)
 
         errors = expectedData - prediction

@@ -14,8 +14,8 @@
       <file leaf-file-name="xorNetwork.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/xorNetwork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="145" column="10" lean-forward="true" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="10" />
+            <state relative-caret-position="420">
+              <caret line="139" column="32" lean-forward="true" selection-start-line="139" selection-start-column="32" selection-end-line="139" selection-end-column="32" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -26,8 +26,8 @@
       <file leaf-file-name="neuralNetwokClass.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/neuralNetwokClass.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="680">
+              <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -69,10 +69,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="457" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="106" />
     <option name="y" value="36" />
-    <option name="width" value="1467" />
+    <option name="width" value="1818" />
     <option name="height" value="917" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -177,26 +177,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="457" y="36" width="1467" height="917" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13301171" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" x="696" y="390" width="540" height="278" id="Event Log" order="7" sideWeight="0.37054795" side_tool="true" type="FLOATING" weight="0.3440594" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32917705" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.100520834" />
+      <window_info anchor="bottom" id="TODO" order="5" />
+      <window_info anchor="bottom" x="696" y="390" width="540" height="278" id="Event Log" order="6" sideWeight="0.37054795" side_tool="true" type="FLOATING" weight="0.3440594" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" x="47" y="146" width="605" height="809" id="Run" order="2" sideWeight="0.62945205" type="FLOATING" visible="true" weight="0.36262375" />
+      <window_info anchor="bottom" id="Python Console" order="8" />
+      <window_info anchor="bottom" x="1239" y="527" width="604" height="467" id="Run" order="10" sideWeight="0.62945205" type="FLOATING" weight="0.36262375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.33042395" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.2646121" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32917705" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -212,21 +212,50 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/neuralNetwokClass.py</url>
-          <line>6</line>
-          <option name="timeStamp" value="28" />
+          <line>38</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/neuralNetwokClass.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="29" />
+      <option name="time" value="31" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/xorNetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2465">
+          <caret line="145" column="10" lean-forward="true" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neuralNetwokClass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nnLayerClass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/net.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="71" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -244,9 +273,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="71" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -264,9 +290,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="71" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -284,9 +307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="71" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -304,9 +324,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="51" lean-forward="true" selection-start-line="14" selection-start-column="51" selection-end-line="71" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -324,9 +341,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2601">
           <caret line="153" lean-forward="true" selection-start-line="153" selection-end-line="153" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -344,9 +358,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2465">
           <caret line="145" column="49" selection-start-line="145" selection-start-column="49" selection-end-line="145" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -364,9 +375,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2465">
           <caret line="145" column="49" selection-start-line="145" selection-start-column="49" selection-end-line="145" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -384,9 +392,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -409,9 +414,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-714">
           <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -431,8 +433,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/neuralNetwokClass.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="680">
+          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -441,8 +443,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/xorNetwork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="145" column="10" lean-forward="true" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="10" />
+        <state relative-caret-position="420">
+          <caret line="139" column="32" lean-forward="true" selection-start-line="139" selection-start-column="32" selection-end-line="139" selection-end-column="32" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
