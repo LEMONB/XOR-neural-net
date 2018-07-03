@@ -3,69 +3,13 @@ import math
 import time
 import pygame
 import numpy as np
-import datetime
 import neuralNetwokClass as network
-import nnLayerClass as nl
 
 # pygame.init()
 # screen = pygame.display.set_mode((600, 400))
 # clock = pygame.time.Clock()
 
 # MAIN METHODS
-def sigmoid(x):
-    return 1/(1+math.exp(-x))
-
-def saveNN():
-    print()
-    # timeStamp = str(datetime.datetime.now())
-    # fileName = timeStamp
-    # fileName = fileName[:-7]
-    # fileName += str(inputNeurons) + str(hiddenNeurons) + str(outputNeurons) + ".txt"
-    # fileName = fileName.replace(" ","")
-    # fileName = fileName.replace("-","")
-    # fileName = fileName.replace(":","")
-    # file = open(fileName, "w+")
-    #
-    # for i in range(hiddenNeurons):
-    #     for j in range(inputNeurons):
-    #         file.write(str(weights_1[i][j])+"\n")
-    # file.write("---\n")
-    # for i in range(hiddenNeurons):
-    #     file.write(str(biases_1[i])+"\n")
-    # file.write("---\n")
-    #
-    # for i in range(outputNeurons):
-    #     for j in range(hiddenNeurons):
-    #         file.write(str(weights_2[i][j])+"\n")
-    # file.write("---\n")
-    # for i in range(outputNeurons):
-    #     file.write(str(biases_2[i])+"\n")
-    # file.write("---\n")
-    #
-    # file.close()
-
-def loadNN(fileName):
-    print()
-    # if (str(inputNeurons) + str(hiddenNeurons) + str(outputNeurons)) in fileName:
-    #     file = open(fileName,"r")
-    #     for i in range(hiddenNeurons):
-    #         for j in range(inputNeurons):
-    #             weights_1[i][j] = np.float32(file.readline())
-    #     file.readline()
-    #     for i in range(hiddenNeurons):
-    #         biases_1[i] = np.float32(file.readline())
-    #     file.readline()
-    #
-    #     for i in range(outputNeurons):
-    #         for j in range(hiddenNeurons):
-    #             weights_2[i][j] = np.float32(file.readline())
-    #     file.readline()
-    #     for i in range(outputNeurons):
-    #         biases_2[i] = np.float32(file.readline())
-    #     file.readline()
-    #
-    #     file.close()
-
 # def drawNet(x):
     # screen.fill((192, 192, 192))
 
@@ -117,7 +61,7 @@ def loadNN(fileName):
 # RIGHT_BORDER = pygame.display.get_surface().get_width() - 100
 # BOTTOM_BORDER = pygame.display.get_surface().get_height() - 100
 
-maxEpoch = 20000
+maxEpoch = 100000
 
 trainingData = np.array([([0,0,0],[0]),([0,0,1],[1]),([0,1,0],[1]),([0,1,1],[0]),
                      ([1,0,0],[1]),([1,0,1],[0]),([1,1,0],[0]),([1,1,1],[1])])
@@ -137,9 +81,9 @@ averageEpochError = 0
 
 #pygame.display.update()
 
-#loadNN("20180627005350341.txt")
 
-nn = network.Network(3,[3],1)
+nn = network.Network(3, [2,2], 1, True)
+# nn.load("20180703164533321.txt")
 
 for j in range(0,maxEpoch):
     print("----------- epoch",j,"-----------")
@@ -147,7 +91,7 @@ for j in range(0,maxEpoch):
         prediction = nn.feedForward(trainSet[i])
         print("-- set",i,"-- ",prediction,"(",trainAnswers[i],")")
         sumOfCurrentErrors += math.pow(trainAnswers[i] - prediction,2)
-        nn.train(trainSet[i],trainAnswers[i])
+        nn.train(trainSet[i],trainAnswers[i], 0.2)
     averageEpochError = sumOfCurrentErrors / len(trainSet)
     print("averageEpochError ", averageEpochError)
     if averageEpochError < 0.001:
@@ -156,6 +100,6 @@ for j in range(0,maxEpoch):
     averageEpochError = 0
     print()
 
-#saveNN()
+nn.save()
 
 dummy = input()

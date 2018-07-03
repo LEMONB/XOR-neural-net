@@ -1,7 +1,7 @@
 import numpy as np
 
 class Layer:
-    def __init__(self, neuronsCurrent, neuronsNext = 0):
+    def __init__(self, neuronsCurrent, neuronsNext = 0, xavierInit = False):
         self.neurons = np.array(neuronsCurrent)
         self.length = neuronsCurrent
 
@@ -13,3 +13,8 @@ class Layer:
             # only for gradient descent
             self.lastWeightsDelta = np.zeros((neuronsCurrent,neuronsNext))
             self.lastBiasesDelta = np.zeros(neuronsNext)
+
+            # xavier initialization
+            if xavierInit:
+                self.weights = np.random.randn(neuronsNext, neuronsCurrent).astype(np.float32) * np.sqrt(1.0/(neuronsNext))
+                self.biases = np.zeros(neuronsNext)

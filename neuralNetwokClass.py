@@ -1,17 +1,18 @@
 import numpy as np
 import nnLayerClass as nl
 import math
+import datetime
 
 class Network:
-    def __init__(self,inputNodes,hiddenLayersAndNodes,outputNodes):
-        self.inputLayer = nl.Layer(inputNodes,hiddenLayersAndNodes[0])
+    def __init__(self, inputNodes, hiddenLayersAndNodes, outputNodes, xavierInit = False):
+        self.inputLayer = nl.Layer(inputNodes,hiddenLayersAndNodes[0],xavierInit)
 
         self.hiddenLayers = np.empty(len(hiddenLayersAndNodes),dtype=nl.Layer)
         for i in range(len(hiddenLayersAndNodes)):
             if i == len(hiddenLayersAndNodes)-1:
-                self.hiddenLayers[i] = nl.Layer(hiddenLayersAndNodes[i], outputNodes)
+                self.hiddenLayers[i] = nl.Layer(hiddenLayersAndNodes[i], outputNodes, xavierInit)
             else:
-                self.hiddenLayers[i] = nl.Layer(hiddenLayersAndNodes[i], hiddenLayersAndNodes[i + 1])
+                self.hiddenLayers[i] = nl.Layer(hiddenLayersAndNodes[i], hiddenLayersAndNodes[i + 1], xavierInit)
 
         self.outputLayer = nl.Layer(outputNodes)
 
@@ -74,3 +75,83 @@ class Network:
 
     def sigmoid(self, x):
         return 1/(1+math.exp(-x))
+
+    def save(self):
+        print()
+        timeStamp = str(datetime.datetime.now())
+        fileName = timeStamp
+        fileName = fileName[:-7]
+        fileName += str(self.inputLayer.length) + str(len(self.hiddenLayers)) + str(self.outputLayer.length) + ".txt"
+        fileName = fileName.replace(" ", "")
+        fileName = fileName.replace("-", "")
+        fileName = fileName.replace(":", "")
+        file = open(fileName, "w+")
+
+        for i in range(self.hiddenLayers[0].length):
+            for j in range(self.inputLayer.length):
+                file.write(str(self.inputLayer.weights[i][j]) + "\n")
+        file.write("---\n")
+
+        for i in range(self.hiddenLayers[0].length):
+            file.write(str(self.inputLayer.biases[i]) + "\n")
+        file.write("---\n")
+
+        for i in range(len(self.hiddenLayers)-1):
+            for j in range(self.hiddenLayers[i+1].length):
+                for k in range(self.hiddenLayers[i].length):
+                    file.write(str(self.hiddenLayers[i].weights[j][k]) + "\n")
+        file.write("---\n")
+
+        for i in range(len(self.hiddenLayers)-1):
+            for j in range(self.hiddenLayers[i+1].length):
+                file.write(str(self.hiddenLayers[i].biases[j]) + "\n")
+        file.write("---\n")
+
+        for i in range(self.outputLayer.length):
+            for j in range(self.hiddenLayers[len(self.hiddenLayers)-1].length):
+                file.write(str(self.hiddenLayers[len(self.hiddenLayers)-1].weights[i][j]) + "\n")
+        file.write("---\n")
+
+        for i in range(self.outputLayer.length):
+            file.write(str(self.hiddenLayers[len(self.hiddenLayers)-1].biases[i]) + "\n")
+        file.write("---\n")
+
+        file.close()
+        print("NN saved")
+
+    def load(self, fileName):
+        if (str(self.inputLayer.length) + str(len(self.hiddenLayers)) + str(self.outputLayer.length)) in fileName:
+            file = open(fileName,"r")
+
+            for i in range(self.hiddenLayers[0].length):
+                for j in range(self.inputLayer.length):
+                    self.inputLayer.weights[i][j] = np.float32(file.readline())
+            file.readline()
+
+            for i in range(self.hiddenLayers[0].length):
+                self.inputLayer.biases[i] = np.float32(file.readline())
+            file.readline()
+
+            for i in range(len(self.hiddenLayers) - 1):
+                for j in range(self.hiddenLayers[i + 1].length):
+                    for k in range(self.hiddenLayers[i].length):
+                        self.hiddenLayers[i].weights[j][k] = np.float32(file.readline())
+            file.readline()
+
+            for i in range(len(self.hiddenLayers) - 1):
+                for j in range(self.hiddenLayers[i + 1].length):
+                    self.hiddenLayers[i].biases[j] = np.float32(file.readline())
+            file.readline()
+
+            for i in range(self.outputLayer.length):
+                for j in range(self.hiddenLayers[len(self.hiddenLayers) - 1].length):
+                    self.hiddenLayers[len(self.hiddenLayers) - 1].weights[i][j] = np.float32(file.readline())
+            file.readline()
+
+            for i in range(self.outputLayer.length):
+                self.hiddenLayers[len(self.hiddenLayers) - 1].biases[i] = np.float32(file.readline())
+            file.readline()
+
+            file.close()
+
+            print("NN loaded")
