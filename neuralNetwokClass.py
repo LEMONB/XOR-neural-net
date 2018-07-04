@@ -18,7 +18,8 @@ class Network:
 
     def feedForward(self, input):
         self.inputLayer.neurons = input
-        activation = np.vectorize(self.sigmoid)
+        # activation = np.vectorize(self.sigmoid)
+        activation = np.vectorize(self.relu)
 
         for i in range(len(self.hiddenLayers)):
             if i == 0:  # first hidden layer
@@ -40,7 +41,11 @@ class Network:
         prediction = self.feedForward(inputData)
 
         errors = expectedData - prediction
-        neuronsDelta = errors * np.full(self.outputLayer.length,(1 - self.outputLayer.neurons) * self.outputLayer.neurons)
+        # activation = np.vectorize(self.sigmoid)
+        activation = np.vectorize(self.relu)
+
+        # neuronsDelta = errors * np.full(self.outputLayer.length,(1 - self.outputLayer.neurons) * self.outputLayer.neurons)
+        neuronsDelta = errors * np.full(self.outputLayer.length, activation(self.outputLayer.neurons, True))
 
         # weights inside hidden layers
         for i in range(len(self.hiddenLayers)-1,-1,-1):
@@ -58,8 +63,10 @@ class Network:
             self.hiddenLayers[i].weights += np.transpose(weightsDelta)
             self.hiddenLayers[i].biases += biasesDelta
 
+            # neuronsDelta = np.dot(np.transpose(self.hiddenLayers[i].weights), neuronsDelta) * \
+            #                   np.full(self.hiddenLayers[i].length,(1 - self.hiddenLayers[i].neurons) * self.hiddenLayers[i].neurons)
             neuronsDelta = np.dot(np.transpose(self.hiddenLayers[i].weights), neuronsDelta) * \
-                              np.full(self.hiddenLayers[i].length,(1 - self.hiddenLayers[i].neurons) * self.hiddenLayers[i].neurons)
+                              np.full(self.hiddenLayers[i].length, activation(self.hiddenLayers[i].neurons, True))
 
         # weights from input layer
         grad = np.dot(np.transpose(np.reshape(self.inputLayer.neurons, (1, self.inputLayer.length))), np.reshape(neuronsDelta, (1, self.hiddenLayers[0].length)))
@@ -73,8 +80,18 @@ class Network:
         self.inputLayer.weights += np.transpose(weightsDelta)
         self.inputLayer.biases += biasesDelta
 
-    def sigmoid(self, x):
+    def sigmoid(self, x, deriv = False):
+        if deriv:
+            return (1 - x) * x
         return 1/(1+math.exp(-x))
+
+    def relu(self, x, deriv = False):
+        if deriv:
+            if x > 0:
+                return 1
+            else:
+                return 0.01
+        return max(0.01*x,x)
 
     def save(self):
         print()

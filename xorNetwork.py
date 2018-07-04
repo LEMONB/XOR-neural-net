@@ -4,6 +4,7 @@ import time
 import pygame
 import numpy as np
 import neuralNetwokClass as network
+import matplotlib.pyplot as plt
 
 # pygame.init()
 # screen = pygame.display.set_mode((600, 400))
@@ -61,7 +62,7 @@ import neuralNetwokClass as network
 # RIGHT_BORDER = pygame.display.get_surface().get_width() - 100
 # BOTTOM_BORDER = pygame.display.get_surface().get_height() - 100
 
-maxEpoch = 100000
+maxEpoch = 50000
 
 trainingData = np.array([([0,0,0],[0]),([0,0,1],[1]),([0,1,0],[1]),([0,1,1],[0]),
                      ([1,0,0],[1]),([1,0,1],[0]),([1,1,0],[0]),([1,1,1],[1])])
@@ -73,6 +74,7 @@ trainAnswers = np.array([[0],[1],[1],[0],
 
 sumOfCurrentErrors = 0
 averageEpochError = 0
+errorPoints = []
 
 # screen.fill((192, 192, 192))
 # clock.tick(60)
@@ -82,7 +84,7 @@ averageEpochError = 0
 #pygame.display.update()
 
 
-nn = network.Network(3, [2,2], 1, True)
+nn = network.Network(3, [8,8], 1)
 # nn.load("20180703164533321.txt")
 
 for j in range(0,maxEpoch):
@@ -91,15 +93,22 @@ for j in range(0,maxEpoch):
         prediction = nn.feedForward(trainSet[i])
         print("-- set",i,"-- ",prediction,"(",trainAnswers[i],")")
         sumOfCurrentErrors += math.pow(trainAnswers[i] - prediction,2)
-        nn.train(trainSet[i],trainAnswers[i], 0.2)
+        nn.train(trainSet[i],trainAnswers[i], 0.001)
     averageEpochError = sumOfCurrentErrors / len(trainSet)
+    errorPoints.append(averageEpochError)
     print("averageEpochError ", averageEpochError)
-    if averageEpochError < 0.001:
-        break
+    # if averageEpochError < 0.001:
+        # break
     sumOfCurrentErrors = 0
     averageEpochError = 0
     print()
 
-nn.save()
 
-dummy = input()
+X = np.arange(0,maxEpoch,1)
+
+plt.plot(X,errorPoints)
+plt.xlabel("Epochs")
+plt.ylabel("MSE")
+# plt.scatter(X,errorPoints,s=1)
+plt.show()
+nn.save()
