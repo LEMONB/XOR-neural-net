@@ -6,7 +6,7 @@ class Layer:
         self.length = neuronsCurrent
 
         if neuronsNext != 0:
-            self.randomRange = 0.1
+            self.randomRange = 0.2
             self.weights = np.random.uniform(-self.randomRange,self.randomRange,(neuronsNext,neuronsCurrent))
             self.biases = np.random.uniform(-self.randomRange,self.randomRange,neuronsNext)
 

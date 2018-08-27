@@ -18,8 +18,8 @@ class Network:
 
     def feedForward(self, input):
         self.inputLayer.neurons = input
-        # activation = np.vectorize(self.sigmoid)
-        activation = np.vectorize(self.relu)
+        activation = np.vectorize(self.sigmoid)
+        #activation = np.vectorize(self.relu)
 
         for i in range(len(self.hiddenLayers)):
             if i == 0:  # first hidden layer
@@ -41,8 +41,8 @@ class Network:
         prediction = self.feedForward(inputData)
 
         errors = expectedData - prediction
-        # activation = np.vectorize(self.sigmoid)
-        activation = np.vectorize(self.relu)
+        activation = np.vectorize(self.sigmoid)
+        #activation = np.vectorize(self.relu)
 
         # neuronsDelta = errors * np.full(self.outputLayer.length,(1 - self.outputLayer.neurons) * self.outputLayer.neurons)
         neuronsDelta = errors * np.full(self.outputLayer.length, activation(self.outputLayer.neurons, True))
@@ -85,13 +85,21 @@ class Network:
             return (1 - x) * x
         return 1/(1+math.exp(-x))
 
-    def relu(self, x, deriv = False):
+    def leakyRelu(self, x, deriv = False):
         if deriv:
             if x > 0:
                 return 1
             else:
                 return 0.01
         return max(0.01*x,x)
+
+    def relu(self, x, deriv = False):
+        if deriv:
+            if x > 0:
+                return 1
+            else:
+                return 0
+        return max(0,x)
 
     def save(self):
         print()
