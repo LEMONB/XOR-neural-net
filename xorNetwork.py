@@ -101,7 +101,7 @@ font = pygame.font.SysFont("comicsansms", 10)
 pygame.display.update()
 
 
-nn = network.Network(len(trainSet[0]), [4, 4, 4, 4, 4, 4, 4, 4, 4], 1)
+nn = network.Network(len(trainSet[0]), [3], 1)
 # nn.load("20180703164533321.txt")
 
 for j in range(0,maxEpoch):

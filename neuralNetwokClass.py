@@ -16,6 +16,10 @@ class Network:
 
         self.outputLayer = nl.Layer(outputNodes)
 
+        self.averageWeightUpdate = 0
+        self.averageBiasUpdate = 0
+        self.setsPassed = 0
+
     def feedForward(self, input):
         self.inputLayer.neurons = input
         activation = np.vectorize(self.sigmoid)
@@ -77,8 +81,24 @@ class Network:
         biasesDelta = neuronsDelta * learningRate + self.inputLayer.lastBiasesDelta * inertia
         self.inputLayer.lastBiasesDelta = biasesDelta
 
-        self.inputLayer.weights += np.transpose(weightsDelta)
-        self.inputLayer.biases += biasesDelta
+        self.updateParameters(np.transpose(weightsDelta),biasesDelta)
+
+        #self.inputLayer.weights += np.transpose(weightsDelta)
+        #self.inputLayer.biases += biasesDelta
+
+    def updateParameters(self, weights, biases):
+        if self.setsPassed == 8:
+            self.averageWeightUpdate /= 8
+            self.averageBiasUpdate /= 8
+            self.inputLayer.weights += self.averageWeightUpdate
+            self.inputLayer.biases += self.averageBiasUpdate
+            self.setsPassed = 0
+            self.averageWeightUpdate = 0
+            self.averageBiasUpdate = 0
+
+        self.averageWeightUpdate += weights
+        self.averageBiasUpdate += biases
+        self.setsPassed += 1
 
     def sigmoid(self, x, deriv = False):
         if deriv:
