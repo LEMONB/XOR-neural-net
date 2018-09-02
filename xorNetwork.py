@@ -59,7 +59,8 @@ def drawNet(x = 0):
 
     #drawing outputs
     for k in range(nn.outputLayer.length):
-        pygame.draw.circle(screen,pygame.__color_constructor(int(255 * (1-nn.outputLayer.neurons[k])),int(255 * nn.outputLayer.neurons[k]),0,255),
+        #pygame.draw.circle(screen,pygame.__color_constructor(int(255 * (1-nn.outputLayer.neurons[k])),int(255 * nn.outputLayer.neurons[k]),0,255),
+        pygame.draw.circle(screen,pygame.__color_constructor(int(255 * (abs(trainAnswers[x][0]-nn.outputLayer.neurons[k]))),int(255 * (1-abs(trainAnswers[x][0]-nn.outputLayer.neurons[k]))),0,255),
                            (RIGHT_BORDER,TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/nn.outputLayer.length)),35)
         text = font.render(str(round(nn.outputLayer.neurons[k],2)), False, (0, 0, 0))
         screen.blit(text, (RIGHT_BORDER,TOP_BORDER + k * round((BOTTOM_BORDER-TOP_BORDER)/nn.outputLayer.length)) )
@@ -100,7 +101,7 @@ font = pygame.font.SysFont("comicsansms", 10)
 pygame.display.update()
 
 
-nn = network.Network(len(trainSet[0]), [10], 1)
+nn = network.Network(len(trainSet[0]), [4, 4, 4, 4, 4, 4, 4, 4, 4], 1)
 # nn.load("20180703164533321.txt")
 
 for j in range(0,maxEpoch):
