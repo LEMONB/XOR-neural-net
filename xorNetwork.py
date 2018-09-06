@@ -76,7 +76,7 @@ LEFT_BORDER = 100
 RIGHT_BORDER = pygame.display.get_surface().get_width() - 100
 BOTTOM_BORDER = pygame.display.get_surface().get_height() - 100
 
-maxEpoch = 50000
+maxEpoch = 1000
 
 trainingData = np.array([([0,0,0],[0]),([0,0,1],[1]),([0,1,0],[1]),([0,1,1],[0]),
                      ([1,0,0],[1]),([1,0,1],[0]),([1,1,0],[0]),([1,1,1],[1])])
@@ -138,7 +138,7 @@ for j in range(0,maxEpoch):
         print("-- set",i,"-- ",prediction,"(",trainingData[i][1],")")
         sumOfCurrentErrors += math.pow(trainingData[i][1] - prediction,2)
         nn.train(trainingData[i][0],trainingData[i][1], 0.4)
-        #drawNet(i)
+        drawNet(i)
     averageEpochError = sumOfCurrentErrors / len(trainingData)
     if j % 10 == 0:
         errorPoints.append(averageEpochError)
@@ -160,4 +160,4 @@ plt.show()
 #except Exception:
  #   print("can not draw plot")
 
-input("Press any key to exit...")
+#input("Press any key to exit...")
