@@ -81,10 +81,10 @@ class Network:
         biasesDelta = neuronsDelta * learningRate + self.inputLayer.lastBiasesDelta * inertia
         self.inputLayer.lastBiasesDelta = biasesDelta
 
-        self.updateParameters(np.transpose(weightsDelta),biasesDelta)
+        #self.updateParameters(np.transpose(weightsDelta),biasesDelta)
 
-        #self.inputLayer.weights += np.transpose(weightsDelta)
-        #self.inputLayer.biases += biasesDelta
+        self.inputLayer.weights += np.transpose(weightsDelta)
+        self.inputLayer.biases += biasesDelta
 
     def updateParameters(self, weights, biases):
         if self.setsPassed == 8:
